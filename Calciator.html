@@ -7,103 +7,155 @@
 </head>
 <body>
     <p>CALCULATOR</p>
+
+    <p class="boardCalculator"></p>
     <p>
         <button onclick="
-            calculation += '1';
-            console.log(calculation);
+           handlingButtons(event);
             ">1</button>
         <button onclick="
-         calculation += '2';
-            console.log(calculation);
+         handlingButtons(event);
         ">2</button>
         <button onclick="
-         calculation += '3';
-            console.log(calculation);
+         handlingButtons(event);
         ">3</button>
         <button onclick="
-         calculation += ' + ';
-            console.log(calculation);
+         handlingButtons(event);
         ">+</button>
     </p>
     <p>
         <button onclick="
-             calculation += '4';
-            console.log(calculation);
+             handlingButtons(event);
             ">4</button>
         <button onclick="
-         calculation += '5';
-            console.log(calculation);
+         handlingButtons(event);
         ">5</button>
         <button onclick="
-         calculation += '6';
-            console.log(calculation);
+         handlingButtons(event);
         ">6</button>
         <button onclick="
-         calculation += ' - ';
-            console.log(calculation);
+         handlingButtons(event);
         ">-</button>
     </p>
     <p>
         <button onclick="
-             calculation += '7';
-            console.log(calculation);
+            handlingButtons(event);
             ">7</button>
         <button onclick="
-         calculation += '8';
-            console.log(calculation);
+         handlingButtons(event);
         ">8</button>
         <button onclick="
-         calculation += '9';
-            console.log(calculation);
+         handlingButtons(event);
         ">9</button>
         <button onclick="
-         calculation += '*';
-            console.log(calculation);
+         handlingButtons(event);
         ">*</button>
     </p>
     <p>
         <button onclick="
-             calculation += '0';
-            console.log(calculation);
+            handlingButtons(event);
             ">0</button>
         <button onclick="
-         calculation += '.';
-            console.log(calculation);
+        handlingButtons(event);
         ">.</button>
         <button onclick="
-        calculation = eval(calculation);
-        console.log(calculation);
+        handlingButtons(event);
         ">=</button>
         <button onclick="
-        calculation += '/';
-            console.log(calculation);
+        handlingButtons(event);
         ">/</button>
     </p>
     <p>
         <button onclick="
-            calculation = '';
-            console.log('CLEARED');
+            handlingButtons(event);
             ">CLEAR</button>
     </p>
     
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script>
-        let calculation = '';
+        let calculation = localStorage.getItem('calculation');
+
+        if(calculation === null){
+            calculation = '';
+        }
+
+        document.querySelector(".boardCalculator").innerHTML = calculation;
+
+
+        function handlingButtons(event){
+            if(event.target.innerText === '1'){
+                 calculation += '1';
+            document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+            if(event.target.innerText === '2'){
+                 calculation += '2';
+             document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+            if(event.target.innerText === '3'){
+                 calculation += '3';
+             document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+            if(event.target.innerText === '4'){
+                 calculation += '4';
+             document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+            if(event.target.innerText === '5'){
+                 calculation += '5';
+             document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+             if(event.target.innerText === '6'){
+                 calculation += '6';
+             document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+             if(event.target.innerText === '7'){
+                 calculation += '7';
+             document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+             if(event.target.innerText === '8'){
+                 calculation += '8';
+             document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+             if(event.target.innerText === '9'){
+                 calculation += '9';
+             document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+             if(event.target.innerText === '0'){
+                 calculation += '0';
+             document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+             if(event.target.innerText === '.'){
+                 calculation += '.';
+             document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+             if(event.target.innerText === '/'){
+                 calculation += '/';
+             document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+             if(event.target.innerText === '*'){
+                 calculation += '*';
+             document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+             if(event.target.innerText === '-'){
+                 calculation += '-';
+             document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+             if(event.target.innerText === '+'){
+                 calculation += '+';
+             document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+             if(event.target.innerText === '='){
+                 calculation = eval(calculation);
+             document.querySelector(".boardCalculator").innerHTML = calculation;
+            }
+             if(event.target.innerText === 'CLEAR'){
+                 calculation = '';
+                  document.querySelector(".boardCalculator").innerHTML = calculation;
+             }
+
+            localStorage.setItem('calculation',calculation); 
+
+        }
     </script>
 </body>
 </html>
