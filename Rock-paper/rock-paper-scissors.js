@@ -1,64 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock-paper-scissors</title>
-</head>
-<body>
-    <p>ROCK PAPER SCISSORS</p>
-
-
-
-    <button onclick="
-   playGame('Rock');
-    ">Rock</button>
-
-
-    <button onclick="
-    playGame('Paper');
-    ">Paper</button>
-   
-     
-   
-   <button onclick="
-   playGame('Scissors');
-    ">Scissors</button>
-
-
-    <p class="js-result"></p>
-
-    <p class="js-moves"></p>
-
-    <p class="js-score"></p>
-
-
-    <button onclick="
-    score.wins = 0;
-    score.losses = 0;
-    score.ties = 0;
-    localStorage.removeItem('score');
-    updateScoreElement();
-    ">Reset score</button>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-    <script>
-        let score = JSON.parse(localStorage.getItem('score'));
+ let score = JSON.parse(localStorage.getItem('score'));
 
         if(score === null){
             score = {
@@ -120,8 +60,10 @@
 
      document.querySelector('.js-result').innerHTML = result;
 
-     document.querySelector('.js-moves').innerHTML = `You ${playerMove}
-     -- ${computerMove} Computer`;
+     document.querySelector('.js-moves').innerHTML = ` You
+        <img src="images/${playerMove}-emoji.png" alt="" class="move-icon">
+        <img src="images/${computerMove}-emoji.png" alt="" class="move-icon">
+        Computer`;
 
     localStorage.setItem('score', JSON.stringify(score));
     }
@@ -151,6 +93,3 @@
     }
     return computerMove;
 }
-    </script>
-</body>
-</html>
