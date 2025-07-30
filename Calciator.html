@@ -4,12 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <style>
+        body {
+            background-color: rgb(25, 25, 25);
+        }
+        .title{
+            color: white;
+            font-family: Arial;
+        }
+        
+        .boardCalculator {
+            color: white;
+            font-size: 30px;
+            min-height: 40px; /* Make it always visible */
+            padding: 10px;
+           /* border-bottom: 2px solid #888;  Optional: gives it a "display" feel */
+            margin: 10px;
+}
+
+
+        .calculator-grid{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 10px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        button{
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            border: none;
+            margin: 5px;
+            color: white;
+            background-color: #444;
+        }
+
+        .operator{
+            background-color: orange;
+            color: white;
+            border: none;
+        }
+        .clear-button{
+            background-color: #666;
+            grid-column: span 2;
+            border-radius: 10px;
+            height: 60px;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+        }
+
+    </style>
 </head>
 <body>
-    <p>CALCULATOR</p>
+    <p class="title">CALCULATOR</p>
 
     <p class="boardCalculator"></p>
-    <p>
+
+
+    <div class="calculator-grid">
+    
         <button onclick="
            handlingButtons(event);
             ">1</button>
@@ -21,9 +77,11 @@
         ">3</button>
         <button onclick="
          handlingButtons(event);
-        ">+</button>
-    </p>
-    <p>
+        "
+        class="operator"
+        >+</button>
+
+
         <button onclick="
              handlingButtons(event);
             ">4</button>
@@ -33,11 +91,12 @@
         <button onclick="
          handlingButtons(event);
         ">6</button>
-        <button onclick="
+        <button class="operator" onclick="
          handlingButtons(event);
         ">-</button>
-    </p>
-    <p>
+
+    
+    
         <button onclick="
             handlingButtons(event);
             ">7</button>
@@ -47,11 +106,13 @@
         <button onclick="
          handlingButtons(event);
         ">9</button>
-        <button onclick="
+        <button class="operator" onclick="
          handlingButtons(event);
         ">*</button>
-    </p>
-    <p>
+    
+
+
+    
         <button onclick="
             handlingButtons(event);
             ">0</button>
@@ -61,15 +122,16 @@
         <button onclick="
         handlingButtons(event);
         ">=</button>
-        <button onclick="
+        <button class="operator" onclick="
         handlingButtons(event);
         ">/</button>
-    </p>
-    <p>
+
+    
         <button onclick="
             handlingButtons(event);
-            ">CLEAR</button>
-    </p>
+            " class="clear-button"
+            >CLEAR</button>
+ </div>
     
 
 
@@ -129,7 +191,7 @@
              document.querySelector(".boardCalculator").innerHTML = calculation;
             }
              if(event.target.innerText === '/'){
-                 calculation += '/';
+                 calculation += ' / ';
              document.querySelector(".boardCalculator").innerHTML = calculation;
             }
              if(event.target.innerText === '*'){
