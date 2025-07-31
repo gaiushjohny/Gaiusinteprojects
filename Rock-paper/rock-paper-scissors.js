@@ -1,3 +1,18 @@
+ if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(reg => console.log('Service Worker registered:', reg))
+    .catch(err => console.log('Service Worker failed:', err));
+}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  let score = JSON.parse(localStorage.getItem('score'));
 
         if(score === null){
@@ -14,10 +29,12 @@
        let isAutoPlaying = false;
        let intervalId
 
+       /* const autoPlay = () => {
 
+        }*/
        function autoPlay(){
         if(!isAutoPlaying){
-             intervalId= setInterval(function(){
+             intervalId= setInterval(() =>{
             const playerMove = pickComputerMove();
             playGame(playerMove);
         }, 1000);
@@ -28,7 +45,42 @@
         }
        }
 
+       document.querySelector('.Rock-button').addEventListener('click', () => {
+        playGame('Rock');
+       });
 
+       document.querySelector('.Paper-button').addEventListener('click', () => {
+        playGame('Paper');
+       })
+
+       document.querySelector('.Scissors-button').addEventListener('click', ()=>{
+        playGame('Scissors');
+       })
+
+       document.querySelector('.auto-play-button').addEventListener('click', () => {
+        autoPlay();
+
+        const button = document.querySelector('.auto-play-button');
+        if (isAutoPlaying) {
+        button.innerHTML = 'Stop Playing';
+        } else {
+        button.innerHTML = 'Auto Play';
+        }
+       })
+
+       
+
+               
+
+       document.body.addEventListener('keydown',(event) =>{
+        if(event.key === 'r'){
+            playGame('Rock');
+        } else if (event.key === 'p'){
+            playGame('Paper');
+        } else if (event.key === 's'){
+            playGame('Scissors');
+        }
+       })
         function playGame(playerMove){
             const computerMove=pickComputerMove();
      result = '';
